@@ -1,6 +1,5 @@
 package org.inu.jikbit.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -29,6 +28,7 @@ class AccountAdapter(val viewModel:MainViewModel) : ListAdapter<Account, Account
         }
         fun bind(item: Account){
             binding.item = item
+            binding.property.text = (item.balance.toDouble() * item.avg_buy_price.toDouble()).toString()
             binding.viewModel = viewModel
             binding.executePendingBindings()
         }

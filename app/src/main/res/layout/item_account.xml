@@ -71,11 +71,11 @@
                     app:layout_constraintTop_toBottomOf="@id/CoinName" />
 
                 <TextView
+                    android:id="@+id/property"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/varelaround_regular"
-                    android:text="@{item.balance}"
                     android:textColor="#8A8787"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/averagePurchasePrice"
