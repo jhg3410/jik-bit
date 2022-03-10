@@ -30,6 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnIt
             }
         }
         binding.pager.adapter = ViewPagerAdapter(this, viewModel)
+
         binding.pager.registerOnPageChangeCallback(
             object: ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
