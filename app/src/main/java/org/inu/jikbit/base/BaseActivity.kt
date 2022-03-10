@@ -14,6 +14,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, layoutResourceId)
         binding.lifecycleOwner = this
         dataBinding()
+        afterDataBinding()
     }
 
     open fun dataBinding() {
