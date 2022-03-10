@@ -14,7 +14,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val modules = module {
+val AppModule = module {
     single<AccountHttpService> {
         buildRetrofitService()
     }
@@ -26,7 +26,7 @@ val modules = module {
 
 inline fun <reified T> buildRetrofitService(): T {
     return Retrofit.Builder()
-        .baseUrl("http://uniletter.inuappcenter.kr/")
+        .baseUrl("https://api.upbit.com/")
         .addConverterFactory(
             GsonConverterFactory.create(
                 GsonBuilder().serializeNulls().create()
