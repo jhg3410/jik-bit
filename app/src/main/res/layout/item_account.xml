@@ -34,7 +34,7 @@
                 tools:src="@drawable/ic_launcher_foreground" />
 
             <TextView
-                android:id="@+id/koinName"
+                android:id="@+id/CoinName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -54,8 +54,8 @@
                 android:textColor="#8A8787"
                 android:layout_marginTop="8dp"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/koinName"
-                app:layout_constraintTop_toBottomOf="@id/koinName"/>
+                app:layout_constraintStart_toStartOf="@id/CoinName"
+                app:layout_constraintTop_toBottomOf="@id/CoinName"/>
 
             <TextView
                 android:layout_width="wrap_content"
