@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/page_1"
-        android:icon="@mipmap/ic_launcher_round"
-        android:title="Koin" />
+        android:icon="@drawable/ic_banknote"
+        android:title="Coin" />
 
     <item
         android:id="@+id/page_2"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/ic_credit_card"
         android:title="Account" />
 </menu>
