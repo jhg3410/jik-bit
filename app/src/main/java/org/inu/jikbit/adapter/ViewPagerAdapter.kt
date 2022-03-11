@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import org.inu.jikbit.ui.AccountFragment
 import org.inu.jikbit.ui.MainViewModel
-import org.inu.jikbit.ui.TempFragment
+import org.inu.jikbit.ui.CoinFragment
 
 class ViewPagerAdapter(fa: FragmentActivity, val viewModel: MainViewModel):FragmentStateAdapter(fa){
 
@@ -17,7 +17,7 @@ class ViewPagerAdapter(fa: FragmentActivity, val viewModel: MainViewModel):Fragm
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> TempFragment(viewModel = viewModel)
+            0 -> CoinFragment(viewModel = viewModel)
             1 -> AccountFragment(viewModel = viewModel)
             else -> throw IllegalAccessException("????")
         }
