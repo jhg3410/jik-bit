@@ -20,15 +20,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnIt
     }
 
     override fun afterDataBinding() {
-        observe(viewModel.viewEvent) {
-            it.getContentIfNotHandled()?.let { event ->
-                when (event) {
-                    MainViewModel.EVENT_GET_ACCOUNTS -> {
-                        viewModel.getAccounts()
-                    }
-                }
-            }
-        }
         binding.pager.adapter = ViewPagerAdapter(this, viewModel)
 
         binding.pager.registerOnPageChangeCallback(
