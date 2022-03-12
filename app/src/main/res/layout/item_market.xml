@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="org.inu.jikbit.data.model.Market" />
+
+        <variable
+            name="viewModel"
+            type="org.inu.jikbit.ui.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="15dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="15dp"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/accountImageView"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_margin="5dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:id="@+id/CoinName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/varelaround_regular"
+                    android:text="@{item.market}"
+                    android:textColor="#676767"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@id/accountImageView"
+                    app:layout_constraintTop_toTopOf="@id/accountImageView" />
+
+                <TextView
+                    android:id="@+id/averagePurchasePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/varelaround_regular"
+                    android:text="@{item.english_name}"
+                    android:textColor="#8A8787"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/CoinName"
+                    app:layout_constraintTop_toBottomOf="@id/CoinName" />
+
+                <TextView
+                    android:id="@+id/property"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/varelaround_regular"
+                    android:textColor="#8A8787"
+                    android:text="@{item.korean_name}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/averagePurchasePrice"
+                    app:layout_constraintTop_toBottomOf="@id/averagePurchasePrice" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
