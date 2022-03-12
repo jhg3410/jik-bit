@@ -8,6 +8,12 @@ class MarketRepositoryImpl(
 ) : MarketRepository{
 
     override fun getMarkets(): List<Market> {
-        return httpService.getMarkets().execute().body()!!
+        val tmpList = mutableListOf<Market>()
+        httpService.getMarkets().execute().body()!!.forEach {
+            if (it.market.contains("KRW")){
+                tmpList.add(it)
+            }
+        }
+        return tmpList
     }
 }
