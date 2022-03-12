@@ -4,7 +4,7 @@
     <item
         android:id="@+id/page_1"
         android:icon="@drawable/ic_banknote"
-        android:title="Coin" />
+        android:title="Market" />
 
     <item
         android:id="@+id/page_2"

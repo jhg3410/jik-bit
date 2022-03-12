@@ -12,6 +12,7 @@ import org.inu.jikbit.ui.MainViewModel
 class AccountAdapter(val viewModel:MainViewModel) : ListAdapter<Account, AccountAdapter.ViewHolder>(AccountDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountAdapter.ViewHolder = ViewHolder.from(parent,viewModel)
+
     override fun onBindViewHolder(holder: AccountAdapter.ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
