@@ -22,6 +22,7 @@ class MarketFragment(val viewModel: MainViewModel) : BaseFragment<FragmentMarket
     override fun onRefresh() {
         showMarkets()
         binding.pullToRefresh.isRefreshing = false
+        binding.marketEditText.text.clear()
     }
 
     private fun showMarkets(){
