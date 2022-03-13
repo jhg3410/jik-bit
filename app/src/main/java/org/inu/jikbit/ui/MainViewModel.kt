@@ -16,7 +16,7 @@ class MainViewModel : BaseViewModel(), KoinComponent {
 
     val accountList = MutableLiveData<List<Account>>()
     val marketList = MutableLiveData<List<Market>>()
-
+    private var unfilteredList = listOf<Market>()
     private val tmpList = MutableLiveData<List<Account>>()
 
     fun getAccounts() {
@@ -38,6 +38,21 @@ class MainViewModel : BaseViewModel(), KoinComponent {
         CoroutineScope(Dispatchers.IO).launch {
             val marketsDeferred = async { marketRepository.getMarkets() }
             marketList.postValue(marketsDeferred.await())
+            unfilteredList = marketsDeferred.await()
         }
+    }
+
+    private fun filter(inputText:String){
+        val filteredList = mutableListOf<Market>()
+        unfilteredList.forEach {
+            if(it.korean_name.contains(inputText)){
+                filteredList.add(it)
+            }
+        }
+        marketList.value = filteredList
+    }
+
+    fun coinTextChanged(text : CharSequence ){
+        filter(text.toString())
     }
 }
