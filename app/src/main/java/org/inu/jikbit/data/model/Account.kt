@@ -6,5 +6,6 @@ data class Account(
     val locked:String,
     val avg_buy_price:String,
     val avg_buy_price_modified: Boolean,
-    val unit_currency:String
+    val unit_currency:String,
+    var trade_price:String
 )
