@@ -9,10 +9,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.inu.jikbit.AuthorizationToken
 import org.inu.jikbit.data.httpservice.AccountHttpService
 import org.inu.jikbit.data.httpservice.MarketHttpService
-import org.inu.jikbit.data.repository.AccountRepository
-import org.inu.jikbit.data.repository.AccountRepositoryImpl
-import org.inu.jikbit.data.repository.MarketRepository
-import org.inu.jikbit.data.repository.MarketRepositoryImpl
+import org.inu.jikbit.data.httpservice.TickerHttpService
+import org.inu.jikbit.data.repository.account.AccountRepository
+import org.inu.jikbit.data.repository.account.AccountRepositoryImpl
+import org.inu.jikbit.data.repository.market.MarketRepository
+import org.inu.jikbit.data.repository.market.MarketRepositoryImpl
+import org.inu.jikbit.data.repository.ticker.TickerRepository
+import org.inu.jikbit.data.repository.ticker.TickerRepositoryImpl
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,6 +35,14 @@ val AppModule = module {
 
     single<MarketRepository>{
         MarketRepositoryImpl(httpService = get())
+    }
+
+    single<TickerHttpService> {
+        buildRetrofitService()
+    }
+
+    single<TickerRepository>{
+        TickerRepositoryImpl(httpService = get())
     }
 }
 
