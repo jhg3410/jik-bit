@@ -1,11 +1,11 @@
-package org.inu.jikbit.data.repository
+package org.inu.jikbit.data.repository.market
 
 import org.inu.jikbit.data.httpservice.MarketHttpService
 import org.inu.jikbit.data.model.Market
 
 class MarketRepositoryImpl(
     private val httpService: MarketHttpService
-) : MarketRepository{
+) : MarketRepository {
 
     override fun getMarkets(): List<Market> {
         val tmpList = mutableListOf<Market>()

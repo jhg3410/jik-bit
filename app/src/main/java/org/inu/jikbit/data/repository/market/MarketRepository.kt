@@ -1,4 +1,4 @@
-package org.inu.jikbit.data.repository
+package org.inu.jikbit.data.repository.market
 
 import org.inu.jikbit.data.model.Market
 
