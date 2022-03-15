@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnIt
     }
 
     override fun afterDataBinding() {
-        binding.pager.adapter = ViewPagerAdapter(this, viewModel)
+        binding.pager.adapter = ViewPagerAdapter(this)
 
         binding.pager.registerOnPageChangeCallback(
             object: ViewPager2.OnPageChangeCallback(){

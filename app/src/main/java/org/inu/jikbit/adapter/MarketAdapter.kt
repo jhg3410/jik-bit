@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import org.inu.jikbit.data.model.Market
 import org.inu.jikbit.databinding.ItemMarketBinding
 import org.inu.jikbit.ui.MainViewModel
+import org.inu.jikbit.ui.MarketViewModel
 
-class MarketAdapter(val viewModel: MainViewModel) : ListAdapter<Market, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
+class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<Market, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketAdapter.ViewHolder = ViewHolder.from(parent,viewModel)
 
@@ -18,9 +19,9 @@ class MarketAdapter(val viewModel: MainViewModel) : ListAdapter<Market, MarketAd
     }
 
 
-    class ViewHolder private constructor(val binding: ItemMarketBinding, val viewModel: MainViewModel): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: ItemMarketBinding, val viewModel: MarketViewModel): RecyclerView.ViewHolder(binding.root){
         companion object {
-            fun from(parent: ViewGroup, viewModel: MainViewModel) : ViewHolder {
+            fun from(parent: ViewGroup, viewModel: MarketViewModel) : ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemMarketBinding.inflate(layoutInflater, parent, false)
 

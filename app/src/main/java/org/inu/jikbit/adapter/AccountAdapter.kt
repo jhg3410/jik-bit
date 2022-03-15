@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.inu.jikbit.data.model.Account
 import org.inu.jikbit.databinding.ItemAccountBinding
-import org.inu.jikbit.ui.MainViewModel
+import org.inu.jikbit.ui.AccountViewModel
 
-class AccountAdapter(val viewModel:MainViewModel) : ListAdapter<Account, AccountAdapter.ViewHolder>(AccountDiffUtil()) {
+class AccountAdapter(val viewModel:AccountViewModel) : ListAdapter<Account, AccountAdapter.ViewHolder>(AccountDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountAdapter.ViewHolder = ViewHolder.from(parent,viewModel)
 
@@ -18,9 +18,9 @@ class AccountAdapter(val viewModel:MainViewModel) : ListAdapter<Account, Account
     }
 
 
-    class ViewHolder private constructor(val binding: ItemAccountBinding, val viewModel: MainViewModel): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: ItemAccountBinding, val viewModel: AccountViewModel): RecyclerView.ViewHolder(binding.root){
         companion object {
-            fun from(parent: ViewGroup, viewModel: MainViewModel) : ViewHolder {
+            fun from(parent: ViewGroup, viewModel: AccountViewModel) : ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemAccountBinding.inflate(layoutInflater, parent, false)
 
