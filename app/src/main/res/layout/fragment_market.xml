@@ -24,7 +24,7 @@
             android:backgroundTint="@color/primary"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="10dp"
-            android:hint="코인명 검색"
+            android:hint="Serach Coin"
             android:inputType="textFilter"
             android:maxLines="1"
             android:paddingHorizontal="6dp"
