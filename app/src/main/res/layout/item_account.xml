@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,9 +15,7 @@
             type="org.inu.jikbit.ui.AccountViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -24,82 +24,152 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="15dp"
+            app:cardCornerRadius="14dp"
             app:cardElevation="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            
-            <FrameLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_gradient"/>
+                android:background="@drawable/background_gradient"
+                android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
 
-                <ImageView
-                    android:id="@+id/accountImageView"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:layout_margin="5dp"
-                    android:padding="10dp"
-                    android:scaleType="centerCrop"
-                    app:ImageWithUrl="@{item.currency.toLowerCase()}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/ic_launcher_foreground" />
+                    <ImageView
+                        android:id="@+id/accountImageView"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"
+                        android:scaleType="centerCrop"
+                        app:ImageWithUrl="@{item.currency.toLowerCase()}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/ic_launcher_foreground" />
 
-                <TextView
-                    android:id="@+id/CoinName"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/CoinName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:text="@{item.currency}"
+                        android:textColor="#676767"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/accountImageView"
+                        app:layout_constraintStart_toEndOf="@id/accountImageView"
+                        app:layout_constraintTop_toTopOf="@id/accountImageView"
+                        tools:text="DOGE" />
+
+                    <TextView
+                        android:id="@+id/yield"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="@{`수익률\n`+String.format(`%.2f`,((Double.parseDouble(item.trade_price)/(Double.parseDouble(item.avg_buy_price)))*100)-Double.valueOf(100))+`%`}"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/income"
+                        app:layout_constraintEnd_toEndOf="@id/income"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="수익률\n-66%" />
+
+                    <TextView
+                        android:id="@+id/income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:gravity="end"
+                        android:text="@{`평가손익\n`+String.format(`%.2f`,((Double.parseDouble(item.balance)*Double.parseDouble(item.trade_price))-Double.parseDouble(item.balance)*Double.parseDouble(item.avg_buy_price)))}"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/yield"
+                        tools:text="평가손익\n 10000000000" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:fontFamily="@font/varelaround_regular"
-                    android:text="@{item.currency}"
-                    android:textColor="#676767"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@id/accountImageView"
-                    app:layout_constraintTop_toTopOf="@id/accountImageView" />
+                    android:background="@color/white">
 
-                <TextView
-                    android:id="@+id/averagePurchasePrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/varelaround_regular"
-                    android:text="@{item.avg_buy_price}"
-                    android:textColor="#8A8787"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@id/CoinName"
-                    app:layout_constraintTop_toBottomOf="@id/CoinName" />
+                    <TextView
+                        android:id="@+id/tradePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:gravity="end"
+                        android:textColor="#8A8787"
+                        android:textSize="14sp"
+                        app:div="@{`현재가`}"
+                        app:layout_constraintEnd_toStartOf="@+id/propertyNow"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textWithKRW="@{item.trade_price}"
+                        tools:text="현재가\n140" />
 
-                <TextView
-                    android:id="@+id/property"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/varelaround_regular"
-                    android:textColor="#8A8787"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@id/averagePurchasePrice"
-                    app:layout_constraintTop_toBottomOf="@id/averagePurchasePrice" />
+                    <TextView
+                        android:id="@+id/propertyNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="12dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:gravity="end"
+                        android:textColor="#8A8787"
+                        android:textSize="14sp"
+                        app:div="@{`평가금액`}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintTop_toTopOf="@id/tradePrice"
+                        app:textWithKRW="@{Double.toString((Double.parseDouble(item.balance)*Double.parseDouble(item.trade_price)))}"
+                        tools:text="평가금액 \n21222222" />
 
-                <TextView
-                    android:id="@+id/tradePrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.trade_price}"
-                    app:layout_constraintTop_toTopOf="@id/CoinName"
-                    app:layout_constraintStart_toEndOf="@id/CoinName"
-                    android:textSize="16sp"
-                    android:layout_marginStart="8dp"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/purchasePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:gravity="end"
+                        android:textColor="#8A8787"
+                        android:textSize="14sp"
+                        app:div="@{`매수가`}"
+                        app:layout_constraintEnd_toEndOf="@id/tradePrice"
+                        app:layout_constraintTop_toBottomOf="@id/tradePrice"
+                        app:textWithKRW="@{item.avg_buy_price}"
+                        tools:text="매수가\n430.000000" />
 
 
+                    <TextView
+                        android:id="@+id/property"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:gravity="end"
+                        android:textColor="#8A8787"
+                        android:textSize="14sp"
+                        app:div="@{`매수금액`}"
+                        app:layout_constraintEnd_toEndOf="@id/propertyNow"
+                        app:layout_constraintTop_toTopOf="@id/purchasePrice"
+                        app:textWithKRW="@{Double.toString((Double.parseDouble(item.balance)*Double.parseDouble(item.avg_buy_price)))}"
+                        tools:text="매수금액\n21222222" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
