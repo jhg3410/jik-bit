@@ -29,7 +29,6 @@ class AccountAdapter(val viewModel:AccountViewModel) : ListAdapter<Account, Acco
         }
         fun bind(item: Account){
             binding.item = item
-            binding.property.text = (item.balance.toDouble() * item.avg_buy_price.toDouble()).toString()
             binding.viewModel = viewModel
             binding.executePendingBindings()
         }
