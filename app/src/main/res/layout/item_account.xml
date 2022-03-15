@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="org.inu.jikbit.ui.MainViewModel" />
+            type="org.inu.jikbit.ui.AccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
