@@ -33,3 +33,8 @@ fun setImageWithUrl(view: ImageView, coinName:String){
 fun setTextWithKRW(view: TextView, div:String,text: String){
         Span.plusKRW(view,div,text)
 }
+
+@BindingAdapter("app:div2","app:textLast")
+fun setTextLastEmp(view: TextView, div:String,text: String){
+    Span.lastTextEmp(view,div,text)
+}
