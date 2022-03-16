@@ -14,7 +14,7 @@ import java.text.DecimalFormat
 
 object Span {
     fun plusKRW(view: TextView,div:String,text:String) {
-        val df = DecimalFormat("##00.00")
+        val df = DecimalFormat("#,###.##")
         val builder = SpannableStringBuilder(div+"\n"+df.format(text.toDouble())+" KRW")
 
         val boldSpan = StyleSpan(Typeface.BOLD)
@@ -29,4 +29,23 @@ object Span {
 
         view.text = builder
     }
+
+    fun lastTextEmp(view: TextView,div:String,text:String) {
+        val df = DecimalFormat("#,###.##")
+        val builder = SpannableStringBuilder(div+"\n"+df.format(text.toDouble()))
+
+        val boldSpan = StyleSpan(Typeface.BOLD)
+        val sizeSpan = RelativeSizeSpan(1.5f)
+        val colorSpan = ForegroundColorSpan(ContextCompat.getColor(view.context,R.color.gray20))
+
+        builder.run {
+            setSpan(boldSpan, div.lastIndex+1 , lastIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            setSpan(sizeSpan, div.lastIndex+1 , lastIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            setSpan(colorSpan,div.lastIndex+1 , lastIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+
+        view.text = builder
+    }
+
+
 }
