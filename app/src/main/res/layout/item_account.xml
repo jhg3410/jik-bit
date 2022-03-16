@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="end"
-                        android:text="@{`수익률\n`+String.format(`%.2f`,((Double.parseDouble(item.trade_price)/(Double.parseDouble(item.avg_buy_price)))*100)-Double.valueOf(100))+`%`}"
+                        android:text="@{`수익률\n`+item.yield+`%`}"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toTopOf="@+id/income"
                         app:layout_constraintEnd_toEndOf="@id/income"
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="2dp"
                         android:gravity="end"
-                        android:text="@{`평가손익\n`+String.format(`%.2f`,((Double.parseDouble(item.balance)*Double.parseDouble(item.trade_price))-Double.parseDouble(item.balance)*Double.parseDouble(item.avg_buy_price)))}"
+                        android:text="@{`평가손익\n`+item.income}"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +134,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintTop_toTopOf="@id/tradePrice"
-                        app:textWithKRW="@{Double.toString((Double.parseDouble(item.balance)*Double.parseDouble(item.trade_price)))}"
+                        app:textWithKRW="@{item.propertyNow}"
                         tools:text="평가금액 \n21222222" />
 
                     <TextView
@@ -164,7 +164,7 @@
                         app:div="@{`매수금액`}"
                         app:layout_constraintEnd_toEndOf="@id/propertyNow"
                         app:layout_constraintTop_toTopOf="@id/purchasePrice"
-                        app:textWithKRW="@{Double.toString((Double.parseDouble(item.balance)*Double.parseDouble(item.avg_buy_price)))}"
+                        app:textWithKRW="@{item.property}"
                         tools:text="매수금액\n21222222" />
 
 
