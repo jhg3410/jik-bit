@@ -18,25 +18,15 @@ class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentA
     override fun dataBinding() {
         super.dataBinding()
         binding.viewModel = viewModel
-        observe(viewModel.viewEvent){
-            it.getContentIfNotHandled()?.let{ event ->
-                when (event){
+        observe(viewModel.viewEvent) {
+            it.getContentIfNotHandled()?.let { event ->
+                when (event) {
                     AccountViewModel.NETWORK_END -> {
-                        binding.pullToRefresh.visibility= VISIBLE
+                        binding.pullToRefresh.visibility = VISIBLE
                         binding.loading.visibility = INVISIBLE
                     }
                     AccountViewModel.ANI_BUTTON_CLICK -> {
-                        val animShow: Animation = AnimationUtils.loadAnimation(this.context,R.anim.translate_show)
-                        val animHide: Animation = AnimationUtils.loadAnimation(this.context,R.anim.translate_hide)
-                        binding.pullToRefresh.run{
-                            visibility = if (viewModel.aniState.value!!)     {
-                                startAnimation(animHide)
-                                INVISIBLE
-                            } else {
-                                startAnimation(animShow)
-                                VISIBLE
-                            }
-                        }
+                        animRecyclerView()
                     }
                 }
             }
@@ -56,5 +46,19 @@ class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentA
     private fun showAccounts(){
         viewModel.getAccounts()
         binding.accountRecyclerView.adapter = AccountAdapter(viewModel)
+    }
+
+    private fun animRecyclerView(){
+        val animShow: Animation = AnimationUtils.loadAnimation(this.context,R.anim.translate_show)
+        val animHide: Animation = AnimationUtils.loadAnimation(this.context,R.anim.translate_hide)
+        binding.pullToRefresh.run{
+            visibility = if (viewModel.aniState.value!!)     {
+                startAnimation(animHide)
+                INVISIBLE
+            } else {
+                startAnimation(animShow)
+                VISIBLE
+            }
+        }
     }
 }
