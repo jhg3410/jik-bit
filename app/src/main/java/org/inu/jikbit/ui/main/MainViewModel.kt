@@ -1,4 +1,4 @@
-package org.inu.jikbit.ui
+package org.inu.jikbit.ui.main
 
 import org.inu.jikbit.base.BaseViewModel
 

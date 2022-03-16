@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.inu.jikbit.data.model.Market
 import org.inu.jikbit.databinding.ItemMarketBinding
-import org.inu.jikbit.ui.MainViewModel
-import org.inu.jikbit.ui.MarketViewModel
+import org.inu.jikbit.ui.market.MarketViewModel
 
 class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<Market, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
 

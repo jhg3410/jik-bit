@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="org.inu.jikbit.ui.MarketViewModel" />
+            type="org.inu.jikbit.ui.market.MarketViewModel" />
     </data>
 
 

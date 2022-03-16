@@ -1,4 +1,4 @@
-package org.inu.jikbit.ui
+package org.inu.jikbit.ui.market
 
 
 import android.view.View.INVISIBLE

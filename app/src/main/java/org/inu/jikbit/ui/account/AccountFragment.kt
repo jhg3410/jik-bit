@@ -1,4 +1,4 @@
-package org.inu.jikbit.ui
+package org.inu.jikbit.ui.account
 
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE

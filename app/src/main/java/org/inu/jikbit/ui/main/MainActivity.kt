@@ -1,4 +1,4 @@
-package org.inu.jikbit.ui
+package org.inu.jikbit.ui.main
 
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -8,7 +8,6 @@ import org.inu.jikbit.R
 import org.inu.jikbit.adapter.ViewPagerAdapter
 import org.inu.jikbit.base.BaseActivity
 import org.inu.jikbit.databinding.ActivityMainBinding
-import org.inu.jikbit.util.observe
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnItemSelectedListener {
     override val layoutResourceId: Int = R.layout.activity_main

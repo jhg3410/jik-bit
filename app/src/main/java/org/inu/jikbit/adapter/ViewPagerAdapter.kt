@@ -3,7 +3,10 @@ package org.inu.jikbit.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import org.inu.jikbit.ui.*
+import org.inu.jikbit.ui.account.AccountFragment
+import org.inu.jikbit.ui.account.AccountViewModel
+import org.inu.jikbit.ui.market.MarketFragment
+import org.inu.jikbit.ui.market.MarketViewModel
 
 class ViewPagerAdapter(fa: FragmentActivity):FragmentStateAdapter(fa){
 

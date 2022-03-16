@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="org.inu.jikbit.ui.AccountViewModel" />
+            type="org.inu.jikbit.ui.account.AccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
