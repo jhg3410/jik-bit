@@ -60,9 +60,9 @@
                 android:id="@+id/allProperty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:fontFamily="@font/varelaround_regular"
                 android:text="총 보유자산\n0"
-                android:layout_marginStart="12dp"
                 android:textColor="@color/primary"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -72,16 +72,42 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/aniButton"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_ani"
+            android:backgroundTint="@color/white"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@id/pullToRefresh"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="@{()->viewModel.aniButtonClick()}"
-            android:background="@drawable/background_gradient"
-            android:text="@{viewModel.aniText}"/>
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28sp"
+                android:text="Coin In Hand"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/aniButton" />
+
+            <TextView
+                android:id="@+id/aniButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20sp"
+                android:padding="10dp"
+                android:onClick="@{()->viewModel.aniButtonClick()}"
+                android:text="@{viewModel.aniText}"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="▼" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/pullToRefresh"
