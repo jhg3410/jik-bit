@@ -21,17 +21,67 @@
             tools:visibility="invisible" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/allAccount"
+            android:id="@+id/Frame"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#DFDFDF"
             app:layout_constraintBottom_toTopOf="@+id/pullToRefresh"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight="2" >
+            app:layout_constraintVertical_weight="2">
+
+            <TextView
+                android:id="@+id/myAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="내 보유자산"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/myKRW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="보유KRW\n0"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/myAccount"
+                app:layout_constraintTop_toBottomOf="@id/myAccount" />
+
+            <TextView
+                android:id="@+id/allProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="총 보유자산\n0"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/myKRW"
+                app:layout_constraintTop_toTopOf="@id/myKRW" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/aniButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/pullToRefresh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{()->viewModel.aniButtonClick()}"
+            android:background="@drawable/background_gradient"
+            android:text="@{viewModel.aniText}"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/pullToRefresh"
@@ -41,7 +91,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/allAccount"
+            app:layout_constraintTop_toBottomOf="@+id/Frame"
             app:layout_constraintVertical_weight="3"
             tools:visibility="visible">
 
