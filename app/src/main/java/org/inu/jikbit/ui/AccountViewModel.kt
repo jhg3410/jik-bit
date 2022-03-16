@@ -19,7 +19,7 @@ class AccountViewModel: BaseViewModel(), KoinComponent {
     val accountList = MutableLiveData<List<Account>>()
     private val tmpList = MutableLiveData<List<Account>>()
     var aniState= MutableLiveData<Boolean>(false)
-    var aniText = MutableLiveData<String>("down")
+    var aniText = MutableLiveData<String>("▼")
 
 
     fun getAccounts() {
@@ -56,11 +56,11 @@ class AccountViewModel: BaseViewModel(), KoinComponent {
 
     fun aniButtonClick(){
         aniState.value = aniState.value!!.not()
-        with(aniState.value){
-            if( this == true)   aniText.value = "up"
-            else    aniText.value = "down"
-        }
         viewEvent(ANI_BUTTON_CLICK)
+        with(aniState.value){
+            if( this == true)   aniText.value = "▲"
+            else    aniText.value = "▼"
+        }
     }
 
     companion object{
