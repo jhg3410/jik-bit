@@ -38,3 +38,8 @@ fun setTextWithKRW(view: TextView, div:String,text: String){
 fun setTextLastEmp(view: TextView, div:String,text: String){
     Span.lastTextEmp(view,div,text)
 }
+
+@BindingAdapter("app:textWithFormat")
+fun setTextWithFormat(view: TextView, text: String){
+    Span.textDecimalFormat(view,text)
+}
