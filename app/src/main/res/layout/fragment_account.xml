@@ -23,103 +23,215 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Frame"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="#DFDFDF"
-            app:layout_constraintBottom_toTopOf="@+id/pullToRefresh"
+            android:paddingBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/aniFrame"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight="2">
+            app:layout_constraintVertical_weight="1.9">
 
             <TextView
                 android:id="@+id/myAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/varelaround_regular"
                 android:text="내 보유자산"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/myKRW"
-                android:layout_width="wrap_content"
+                android:id="@+id/totalKRW"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:fontFamily="@font/varelaround_regular"
                 android:textColor="@color/primary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:div2="@{`보유KRW`}"
+                app:layout_constraintEnd_toEndOf="@id/boundary"
                 app:layout_constraintStart_toStartOf="@id/myAccount"
                 app:layout_constraintTop_toBottomOf="@id/myAccount"
-                app:textLast="@{`11111111111`}"
-                tools:text="보유KRW\n11111111111" />
+                app:textLast="@{`0`}"
+                tools:text="보유KRW\n0" />
 
             <View
+                android:id="@+id/boundary"
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:background="#9E9E9E"
-                app:layout_constraintBottom_toBottomOf="@id/myKRW"
+                app:layout_constraintBottom_toBottomOf="@id/totalKRW"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/myKRW" />
+                app:layout_constraintTop_toTopOf="@id/totalKRW" />
 
             <TextView
-                android:id="@+id/allProperty"
-                android:layout_width="wrap_content"
+                android:id="@+id/totalProperty"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/varelaround_regular"
                 android:textColor="@color/primary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:div2="@{`총 보유자산`}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/myKRW"
-                app:layout_constraintTop_toTopOf="@id/myKRW"
-                app:textLast="@{`22222222222`}"
+                app:layout_constraintStart_toEndOf="@+id/totalKRW"
+                app:layout_constraintTop_toTopOf="@id/totalKRW"
+                app:textLast="@{viewModel.totalProperty.toString()}"
                 tools:text="총 보유자산\n22222222222" />
 
+            <TextView
+                android:id="@+id/totalPurchase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="총매수"
+                android:textColor="@color/primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/totalKRW"
+                app:layout_constraintTop_toBottomOf="@id/totalKRW" />
+
+            <TextView
+                android:id="@+id/totalPurchaseAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textColor="#616161"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/boundary"
+                app:layout_constraintTop_toTopOf="@id/totalPurchase"
+                app:textWithFormat="@{viewModel.totalPurchaseAmount.toString()}" />
+
+            <TextView
+                android:id="@+id/totalEvaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="총평가"
+                android:textColor="@color/primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/totalPurchase"
+                app:layout_constraintTop_toBottomOf="@id/totalPurchase" />
+
+            <TextView
+                android:id="@+id/totalEvaluationAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#616161"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/totalPurchaseAmount"
+                app:layout_constraintTop_toTopOf="@id/totalEvaluation"
+                app:textWithFormat="@{viewModel.totalEvaluationAmount.toString()}" />
+
+            <TextView
+                android:id="@+id/totalYield"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="수익률"
+                android:textColor="@color/primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/totalProperty"
+                app:layout_constraintTop_toBottomOf="@id/totalProperty" />
+
+            <TextView
+                android:id="@+id/totalYieldAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:textColor="#616161"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/totalYield"
+                app:layout_goneMarginEnd="12dp"
+                app:textWithFormat="@{viewModel.totalYieldAmount.toString()+`%`}" />
+
+            <TextView
+                android:id="@+id/totalValuation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/varelaround_regular"
+                android:text="평가손익"
+                android:textColor="@color/primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/totalYield"
+                app:layout_constraintTop_toBottomOf="@id/totalYield" />
+
+            <TextView
+                android:id="@+id/totalValuationAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#616161"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/totalYieldAmount"
+                app:layout_constraintTop_toTopOf="@id/totalValuation"
+                app:textWithFormat="@{viewModel.totalValuationAmount.toString()}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/aniFrame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_ani"
-            android:backgroundTint="@color/white"
-            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@id/pullToRefresh"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:background="#DFDFDF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Frame">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/aniLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28sp"
-                android:text="Coin In Hand"
-                android:textSize="16sp"
+                android:background="@drawable/background_ani"
+                android:backgroundTint="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/aniButton" />
-
-            <TextView
-                android:id="@+id/aniButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="22sp"
-                android:onClick="@{()->viewModel.aniButtonClick()}"
-                android:padding="8dp"
-                android:text="@{viewModel.aniText}"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="▼" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28sp"
+                    android:text="Coin In Hand"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/aniButton" />
+
+                <TextView
+                    android:id="@+id/aniButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="22sp"
+                    android:onClick="@{()->viewModel.aniButtonClick()}"
+                    android:padding="8dp"
+                    android:text="@{viewModel.aniText}"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="▼" />
 
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -130,7 +242,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Frame"
+            app:layout_constraintTop_toBottomOf="@+id/aniFrame"
             app:layout_constraintVertical_weight="3"
             tools:visibility="visible">
 
@@ -140,10 +252,6 @@
                 android:layout_height="0dp"
                 app:accounts="@{viewModel.accountList}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_account" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
