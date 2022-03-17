@@ -1,6 +1,6 @@
 package org.inu.jikbit.util
 
-import android.graphics.Color
+import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -47,5 +47,16 @@ object Span {
         view.text = builder
     }
 
+    @SuppressLint("SetTextI18n")
+    fun textDecimalFormat(view:TextView, text:String){
+        val df = DecimalFormat("#,###.##")
+        if ("%" in text){
+            val textNoPercent = text.substring(0,text.lastIndex)
+            view.text = df.format(textNoPercent.toDouble()) + "%"
+        }
+        else{
+        view.text = df.format(text.toDouble())
+        }
+    }
 
 }
