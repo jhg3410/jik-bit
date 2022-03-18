@@ -1,10 +1,7 @@
 package org.inu.jikbit.ui.market
 
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.inu.jikbit.base.BaseViewModel
 import org.inu.jikbit.data.model.Market
 import org.inu.jikbit.data.repository.market.MarketRepository
@@ -29,8 +26,10 @@ class MarketViewModel : BaseViewModel(), KoinComponent {
                 marketsDeferred.await()[i].trade_price = tickersList[i].trade_price
             }
             marketList.postValue(marketsDeferred.await())
+            withContext(Dispatchers.Main){
+                viewEvent(NETWORK_END)
+            }
         }
-        viewEvent(NETWORK_END)
     }
 
     private fun filter(inputText:String){
@@ -54,6 +53,7 @@ class MarketViewModel : BaseViewModel(), KoinComponent {
         }
         return marketsString.substring(0,marketsString.lastIndex)
     }
+
 
     companion object{
         const val NETWORK_END = 1000

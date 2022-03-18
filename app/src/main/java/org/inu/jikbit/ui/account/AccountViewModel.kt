@@ -69,8 +69,10 @@ class AccountViewModel: BaseViewModel(), KoinComponent {
                     else -> accountList.postValue(tmpList.value)    // 시간 텀 없이 새로고침 했을 때
                 }
             }
+            withContext(Dispatchers.Main) {
+                viewEvent(NETWORK_END)
+            }
         }
-        viewEvent(NETWORK_END)
     }
 
     private fun getMyCurrency(list:List<Account>): String{
