@@ -22,8 +22,7 @@ class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentA
             it.getContentIfNotHandled()?.let { event ->
                 when (event) {
                     AccountViewModel.NETWORK_END -> {
-                        binding.pullToRefresh.visibility = VISIBLE
-                        binding.loading.visibility = INVISIBLE
+                        hideLoading()
                     }
                     AccountViewModel.ANI_BUTTON_CLICK -> {
                         animRecyclerView()
@@ -44,8 +43,19 @@ class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentA
     }
 
     private fun showAccounts(){
+        showLoading()
         viewModel.getAccounts()
         binding.accountRecyclerView.adapter = AccountAdapter(viewModel)
+    }
+
+    private fun showLoading(){
+        binding.pullToRefresh.visibility= INVISIBLE
+        binding.loading.visibility = VISIBLE
+    }
+
+    private fun hideLoading(){
+        binding.pullToRefresh.visibility= VISIBLE
+        binding.loading.visibility = INVISIBLE
     }
 
     private fun animRecyclerView(){
