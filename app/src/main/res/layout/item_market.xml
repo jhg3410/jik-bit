@@ -24,7 +24,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="16dp"
             app:cardBackgroundColor="@color/white"
-            app:cardElevation="12dp"
+            app:cardElevation="8dp"
             app:cardCornerRadius="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,8 @@
                     android:fontFamily="@font/varelaround_regular"
                     android:text="@{item.market}"
                     android:textColor="#676767"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
+                    tools:text="KRW-DOGE"
                     app:layout_constraintStart_toEndOf="@id/accountImageView"
                     app:layout_constraintTop_toTopOf="@id/accountImageView" />
 
@@ -69,7 +70,8 @@
                     android:fontFamily="@font/varelaround_regular"
                     android:text="@{item.english_name}"
                     android:textColor="#8A8787"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
+                    tools:text="DOGE"
                     app:layout_constraintStart_toStartOf="@id/CoinName"
                     app:layout_constraintTop_toBottomOf="@id/CoinName" />
 
@@ -82,8 +84,25 @@
                     android:textColor="#8A8787"
                     android:text="@{item.korean_name}"
                     android:textSize="16sp"
+                    tools:text="도지코인"
                     app:layout_constraintStart_toStartOf="@id/purchasePrice"
                     app:layout_constraintTop_toBottomOf="@id/purchasePrice" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/purchasePrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/CoinName"
+                    app:textWithFormat="@{item.trade_price}"
+                    tools:text="2222222222"
+                    android:gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/gray20"/>
+
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
