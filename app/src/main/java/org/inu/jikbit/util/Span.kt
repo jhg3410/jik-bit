@@ -48,14 +48,14 @@ object Span {
     }
 
     @SuppressLint("SetTextI18n")
-    fun textDecimalFormat(view:TextView, text:String){
+    fun textDecimalFormat(view:TextView, text:String?){
         val df = DecimalFormat("#,###.##")
-        if ("%" in text){
+        if (text?.contains("%") == true){
             val textNoPercent = text.substring(0,text.lastIndex)
             view.text = df.format(textNoPercent.toDouble()) + "%"
         }
         else{
-        view.text = df.format(text.toDouble())
+        view.text = df.format(text?.toDouble())
         }
     }
 
