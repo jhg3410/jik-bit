@@ -8,8 +8,7 @@ class AccountRepositoryImpl(
 ): AccountRepository {
 
     override fun getAccounts(): List<Account> {
-        return httpService.getAccounts().execute().body()?.reversed()?.run {
-            subList(0, this.size - 1)
-        } ?: listOf(Account("","","","",false,"","","","","",""))
+        return httpService.getAccounts().execute().body()?.reversed()
+            ?: listOf(Account("","","","",false,"","","","","",""))
     }
 }
