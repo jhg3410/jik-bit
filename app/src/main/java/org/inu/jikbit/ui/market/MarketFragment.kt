@@ -2,22 +2,16 @@ package org.inu.jikbit.ui.market
 
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.ActivityManager
-import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
-import android.util.Log
-import android.view.MotionEvent
-import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import org.inu.jikbit.R
 import org.inu.jikbit.adapter.MarketAdapter
 import org.inu.jikbit.base.BaseFragment
 import org.inu.jikbit.databinding.FragmentMarketBinding
+import org.inu.jikbit.ui.main.MainActivity.Companion.splash_out
 import org.inu.jikbit.util.observe
 
 class MarketFragment(val viewModel: MarketViewModel) : BaseFragment<FragmentMarketBinding>(), SwipeRefreshLayout.OnRefreshListener {
@@ -31,6 +25,7 @@ class MarketFragment(val viewModel: MarketViewModel) : BaseFragment<FragmentMark
                 when (event){
                     MarketViewModel.NETWORK_END -> {
                         hideLoading()
+                        splash_out = true
                     }
                 }
             }
@@ -77,4 +72,5 @@ class MarketFragment(val viewModel: MarketViewModel) : BaseFragment<FragmentMark
         val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.marketEditText.windowToken,0)
     }
+
 }
