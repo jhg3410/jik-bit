@@ -1,6 +1,7 @@
 package org.inu.jikbit.ui.main
 
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
@@ -16,8 +17,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnIt
 
     override fun dataBinding() {
         binding.mainViewModel = viewModel
+        val content = findViewById<View>(android.R.id.content)
+        splash_out = false
+        content.viewTreeObserver.addOnPreDrawListener{splash_out}
     }
-
     override fun afterDataBinding() {
         binding.pager.adapter = ViewPagerAdapter(this)
 
@@ -44,5 +47,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnIt
             }
             else -> false
         }
+    }
+
+    companion object {
+        var splash_out = false
     }
 }
