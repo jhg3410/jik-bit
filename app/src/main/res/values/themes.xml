@@ -14,6 +14,12 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
 
+    </style>
 
+    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_banknote</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="postSplashScreenTheme">@style/Theme.JikBit</item>
     </style>
 </resources>
