@@ -54,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="@id/boundary"
                 app:layout_constraintStart_toStartOf="@id/myAccount"
                 app:layout_constraintTop_toBottomOf="@id/myAccount"
-                app:textLast="@{`0`}"
+                app:textLast="@{viewModel.totalKRW.toString()}"
                 tools:text="보유KRW\n0" />
 
             <View
