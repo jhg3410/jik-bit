@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.internal.platform.Platform
 import okhttp3.logging.HttpLoggingInterceptor
-import org.inu.jikbit.AuthorizationToken
+import org.inu.jikbit.BuildConfig
 import org.inu.jikbit.data.httpservice.AccountHttpService
 import org.inu.jikbit.data.httpservice.MarketHttpService
 import org.inu.jikbit.data.httpservice.TickerHttpService
@@ -82,7 +82,7 @@ class OkHttpClientFactory {
         class AuthInterceptor : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
                 val req = chain.request().newBuilder()
-                    .addHeader("Authorization", AuthorizationToken.AUTHORIZATION_TOKEN).build()
+                    .addHeader("Authorization", BuildConfig.AUTHORIZATION_TOKEN).build()
                 return chain.proceed(req)
             }
         }

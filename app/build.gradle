@@ -4,6 +4,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+
 android {
     compileSdk 31
 
@@ -15,6 +19,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "AUTHORIZATION_TOKEN", properties["authorization_token"]
     }
 
     buildTypes {
@@ -56,8 +61,8 @@ dependencies {
     implementation "io.insert-koin:koin-android:3.1.5"
 
     // Kotlin Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 
     // logging interceptor
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
@@ -67,7 +72,6 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 
     // LiveData
-
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // viewPager2
