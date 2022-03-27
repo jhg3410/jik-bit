@@ -1,4 +1,4 @@
-package org.inu.jikbit.util
+package org.inu.jikbit.global.util
 
 import android.annotation.SuppressLint
 import android.graphics.Typeface

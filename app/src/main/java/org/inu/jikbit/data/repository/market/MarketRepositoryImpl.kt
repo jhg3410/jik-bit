@@ -1,6 +1,6 @@
 package org.inu.jikbit.data.repository.market
 
-import org.inu.jikbit.data.httpservice.MarketHttpService
+import org.inu.jikbit.data.api.MarketHttpService
 import org.inu.jikbit.data.model.Market
 
 class MarketRepositoryImpl(

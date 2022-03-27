@@ -1,8 +1,8 @@
-package org.inu.jikbit.ui.market
+package org.inu.jikbit.presentation.ui.market
 
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
-import org.inu.jikbit.base.BaseViewModel
+import org.inu.jikbit.global.base.BaseViewModel
 import org.inu.jikbit.data.model.Market
 import org.inu.jikbit.data.repository.market.MarketRepository
 import org.inu.jikbit.data.repository.ticker.TickerRepository

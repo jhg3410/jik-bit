@@ -1,4 +1,4 @@
-package org.inu.jikbit.base
+package org.inu.jikbit.global.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package org.inu.jikbit.adapter
+package org.inu.jikbit.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.inu.jikbit.data.model.Account
 import org.inu.jikbit.databinding.ItemAccountBinding
-import org.inu.jikbit.ui.account.AccountViewModel
+import org.inu.jikbit.presentation.ui.account.AccountViewModel
 
 class AccountAdapter(val viewModel: AccountViewModel) : ListAdapter<Account, AccountAdapter.ViewHolder>(AccountDiffUtil()) {
 

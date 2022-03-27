@@ -1,4 +1,4 @@
-package org.inu.jikbit.adapter
+package org.inu.jikbit.presentation.adapter
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -6,8 +6,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.inu.jikbit.data.model.Account
 import org.inu.jikbit.data.model.Market
-import org.inu.jikbit.util.GlideUtil
-import org.inu.jikbit.util.Span
+import org.inu.jikbit.global.util.GlideUtil
+import org.inu.jikbit.global.util.Span
 
 
 @BindingAdapter("app:accounts")

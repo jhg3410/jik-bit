@@ -1,4 +1,4 @@
-package org.inu.jikbit.data.httpservice
+package org.inu.jikbit.data.api
 
 import org.inu.jikbit.data.model.Market
 import retrofit2.Call

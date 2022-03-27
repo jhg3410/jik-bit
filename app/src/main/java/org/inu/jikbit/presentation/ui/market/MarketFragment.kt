@@ -1,4 +1,4 @@
-package org.inu.jikbit.ui.market
+package org.inu.jikbit.presentation.ui.market
 
 
 import android.annotation.SuppressLint
@@ -8,11 +8,11 @@ import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import org.inu.jikbit.R
-import org.inu.jikbit.adapter.MarketAdapter
-import org.inu.jikbit.base.BaseFragment
+import org.inu.jikbit.presentation.adapter.MarketAdapter
+import org.inu.jikbit.global.base.BaseFragment
 import org.inu.jikbit.databinding.FragmentMarketBinding
-import org.inu.jikbit.ui.main.MainActivity.Companion.splash_out
-import org.inu.jikbit.util.observe
+import org.inu.jikbit.presentation.ui.main.MainActivity.Companion.splash_out
+import org.inu.jikbit.global.util.observe
 
 class MarketFragment(val viewModel: MarketViewModel) : BaseFragment<FragmentMarketBinding>(), SwipeRefreshLayout.OnRefreshListener {
     override val layoutResourceId: Int = R.layout.fragment_market

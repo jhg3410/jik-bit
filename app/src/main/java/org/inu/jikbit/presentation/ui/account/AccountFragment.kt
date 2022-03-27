@@ -1,4 +1,4 @@
-package org.inu.jikbit.ui.account
+package org.inu.jikbit.presentation.ui.account
 
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
@@ -6,10 +6,10 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import org.inu.jikbit.R
-import org.inu.jikbit.adapter.AccountAdapter
-import org.inu.jikbit.base.BaseFragment
+import org.inu.jikbit.presentation.adapter.AccountAdapter
+import org.inu.jikbit.global.base.BaseFragment
 import org.inu.jikbit.databinding.FragmentAccountBinding
-import org.inu.jikbit.util.observe
+import org.inu.jikbit.global.util.observe
 
 class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentAccountBinding>(), SwipeRefreshLayout.OnRefreshListener {
 

@@ -1,4 +1,4 @@
-package org.inu.jikbit.adapter
+package org.inu.jikbit.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.inu.jikbit.data.model.Market
 import org.inu.jikbit.databinding.ItemMarketBinding
-import org.inu.jikbit.ui.market.MarketViewModel
+import org.inu.jikbit.presentation.ui.market.MarketViewModel
 
 class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<Market, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
 

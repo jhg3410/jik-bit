@@ -1,8 +1,8 @@
-package org.inu.jikbit.base
+package org.inu.jikbit.global.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.inu.jikbit.util.Event
+import org.inu.jikbit.global.util.Event
 
 abstract class BaseViewModel : ViewModel() {
 

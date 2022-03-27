@@ -1,4 +1,4 @@
-package org.inu.jikbit.util
+package org.inu.jikbit.global.util
 
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.

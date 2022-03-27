@@ -1,6 +1,6 @@
 package org.inu.jikbit.data.repository.ticker
 
-import org.inu.jikbit.data.httpservice.TickerHttpService
+import org.inu.jikbit.data.api.TickerHttpService
 import org.inu.jikbit.data.model.Ticker
 
 class TickerRepositoryImpl(

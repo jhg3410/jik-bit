@@ -1,9 +1,9 @@
-package org.inu.jikbit.ui.account
+package org.inu.jikbit.presentation.ui.account
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
-import org.inu.jikbit.base.BaseViewModel
+import org.inu.jikbit.global.base.BaseViewModel
 import org.inu.jikbit.data.model.Account
 import org.inu.jikbit.data.model.Ticker
 import org.inu.jikbit.data.repository.account.AccountRepository

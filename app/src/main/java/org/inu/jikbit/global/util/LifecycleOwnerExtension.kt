@@ -1,4 +1,4 @@
-package org.inu.jikbit.util
+package org.inu.jikbit.global.util
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

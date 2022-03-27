@@ -7,9 +7,9 @@ import okhttp3.Response
 import okhttp3.internal.platform.Platform
 import okhttp3.logging.HttpLoggingInterceptor
 import org.inu.jikbit.BuildConfig
-import org.inu.jikbit.data.httpservice.AccountHttpService
-import org.inu.jikbit.data.httpservice.MarketHttpService
-import org.inu.jikbit.data.httpservice.TickerHttpService
+import org.inu.jikbit.data.api.AccountHttpService
+import org.inu.jikbit.data.api.MarketHttpService
+import org.inu.jikbit.data.api.TickerHttpService
 import org.inu.jikbit.data.repository.account.AccountRepository
 import org.inu.jikbit.data.repository.account.AccountRepositoryImpl
 import org.inu.jikbit.data.repository.market.MarketRepository
