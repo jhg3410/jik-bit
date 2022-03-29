@@ -1,10 +1,11 @@
 package org.inu.jikbit.data.api
 
-import org.inu.jikbit.data.model.Market
+import org.inu.jikbit.data.model.MarketResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface MarketHttpService {
     @GET("/v1/market/all")
-    fun getMarkets(): Call<List<Market>>
+    fun getMarkets(): Response<List<MarketResponse>>
 }
