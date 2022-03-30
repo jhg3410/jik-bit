@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import org.inu.jikbit.presentation.ui.account.AccountFragment
 import org.inu.jikbit.presentation.ui.account.AccountViewModel
-import org.inu.jikbit.presentation.ui.market.MarketFragment
+//import org.inu.jikbit.presentation.ui.market.MarketFragment
 import org.inu.jikbit.presentation.ui.market.MarketViewModel
 
 class ViewPagerAdapter(fa: FragmentActivity):FragmentStateAdapter(fa){
@@ -18,8 +18,8 @@ class ViewPagerAdapter(fa: FragmentActivity):FragmentStateAdapter(fa){
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> MarketFragment(viewModel = MarketViewModel())
-            1 -> AccountFragment(viewModel = AccountViewModel())
+//            1 -> MarketFragment(viewModel = MarketViewModel())
+            0 -> AccountFragment(viewModel = AccountViewModel())
             else -> throw IllegalAccessException("????")
         }
     }
