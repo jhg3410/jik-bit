@@ -4,21 +4,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.inu.jikbit.data.model.Account
-import org.inu.jikbit.data.model.Market
+import org.inu.jikbit.domain.model.AccountEntity
+import org.inu.jikbit.domain.model.MarketEntity
 import org.inu.jikbit.global.util.GlideUtil
 import org.inu.jikbit.global.util.Span
 
 
 @BindingAdapter("app:accounts")
-fun setAccounts(recyclerView:RecyclerView, list:List<Account>?){
+fun setAccounts(recyclerView:RecyclerView, list:List<AccountEntity>?){
     list?.let{
         (recyclerView.adapter as AccountAdapter).submitList(list)
     }
 }
 
 @BindingAdapter("app:markets")
-fun setMarkets(recyclerView: RecyclerView,list:List<Market>?){
+fun setMarkets(recyclerView: RecyclerView,list:List<MarketEntity>?){
     list?.let{
         (recyclerView.adapter as MarketAdapter).submitList(list)
     }
