@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.inu.jikbit.data.model.Account
 import org.inu.jikbit.databinding.ItemAccountBinding
+import org.inu.jikbit.domain.model.AccountEntity
 import org.inu.jikbit.presentation.ui.account.AccountViewModel
 
-class AccountAdapter(val viewModel: AccountViewModel) : ListAdapter<Account, AccountAdapter.ViewHolder>(AccountDiffUtil()) {
+class AccountAdapter(val viewModel: AccountViewModel) : ListAdapter<AccountEntity, AccountAdapter.ViewHolder>(AccountDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountAdapter.ViewHolder = ViewHolder.from(parent,viewModel)
 
@@ -27,7 +27,7 @@ class AccountAdapter(val viewModel: AccountViewModel) : ListAdapter<Account, Acc
                 return ViewHolder(binding, viewModel)
             }
         }
-        fun bind(item: Account){
+        fun bind(item: AccountEntity){
             binding.item = item
             binding.viewModel = viewModel
             binding.executePendingBindings()
@@ -35,12 +35,12 @@ class AccountAdapter(val viewModel: AccountViewModel) : ListAdapter<Account, Acc
     }
 }
 
-class AccountDiffUtil: DiffUtil.ItemCallback<Account>(){
-    override fun areItemsTheSame(oldItem: Account, newItem: Account): Boolean {
+class AccountDiffUtil: DiffUtil.ItemCallback<AccountEntity>(){
+    override fun areItemsTheSame(oldItem: AccountEntity, newItem: AccountEntity): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
+    override fun areContentsTheSame(oldItem: AccountEntity, newItem: AccountEntity): Boolean {
         return oldItem == newItem
     }
 

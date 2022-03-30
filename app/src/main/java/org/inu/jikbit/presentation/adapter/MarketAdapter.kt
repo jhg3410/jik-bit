@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.inu.jikbit.data.model.Market
 import org.inu.jikbit.databinding.ItemMarketBinding
+import org.inu.jikbit.domain.model.MarketEntity
 import org.inu.jikbit.presentation.ui.market.MarketViewModel
 
-class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<Market, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
+class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<MarketEntity, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketAdapter.ViewHolder = ViewHolder.from(parent,viewModel)
 
@@ -27,7 +27,7 @@ class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<Market, Market
                 return ViewHolder(binding, viewModel)
             }
         }
-        fun bind(item: Market){
+        fun bind(item: MarketEntity){
             binding.item = item
             binding.viewModel = viewModel
             binding.executePendingBindings()
@@ -35,12 +35,12 @@ class MarketAdapter(val viewModel: MarketViewModel) : ListAdapter<Market, Market
     }
 }
 
-class MarketDiffUtil: DiffUtil.ItemCallback<Market>(){
-    override fun areItemsTheSame(oldItem: Market, newItem: Market): Boolean {
+class MarketDiffUtil: DiffUtil.ItemCallback<MarketEntity>(){
+    override fun areItemsTheSame(oldItem: MarketEntity, newItem: MarketEntity): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Market, newItem: Market): Boolean {
+    override fun areContentsTheSame(oldItem: MarketEntity, newItem: MarketEntity): Boolean {
         return oldItem == newItem
     }
 
