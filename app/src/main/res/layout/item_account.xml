@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="org.inu.jikbit.data.model.Account" />
+            type="org.inu.jikbit.domain.model.AccountEntity" />
 
 
         <variable
