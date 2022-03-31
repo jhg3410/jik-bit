@@ -17,9 +17,8 @@ class AccountViewModel : BaseViewModel(), KoinComponent {
     private val getAccountsUseCase: GetAccountsUseCase by inject()
 
     val accountList = MutableLiveData<List<AccountEntity>>()
-    val accountTmpList = MutableLiveData<List<AccountEntity>>()
-    private val tmpList = MutableLiveData<List<AccountEntity>>()
-    private val coinList = MutableLiveData<List<AccountEntity>>()
+    private val accountTmpList = MutableLiveData<List<AccountEntity>>() // 서버에서 받아온 값
+    private val errorTmpList = MutableLiveData<List<AccountEntity>>()   // 에러가 났을 때 처리하기 위한 값
 
     var aniState = MutableLiveData<Boolean>(false)
     var aniText = MutableLiveData<String>("▼")
@@ -35,7 +34,16 @@ class AccountViewModel : BaseViewModel(), KoinComponent {
     fun getAccounts() {
         viewModelScope.launch {
             accountTmpList.value =  getAccountsUseCase()!!
-            Log.d("asdasdasdasdasdasdasd",accountTmpList.value.toString())
+            if (accountTmpList.value!![0].currency != "에러지롱") {     // 처음 들어왔을 떄
+                accountList.postValue(accountTmpList.value) // 대입
+                errorTmpList.postValue(accountTmpList.value)
+            }
+            else{   // 시간 텀 없이 새로고침 했을 때
+                accountList.postValue(errorTmpList.value)
+            }
+            viewEvent(NETWORK_END)
+        }
+    }
 //            withContext(Dispatchers.IO) {
 //                val accountsDeferred = async { accountRepository.getAccounts() }
 //                val await = accountsDeferred.await()
@@ -68,16 +76,7 @@ class AccountViewModel : BaseViewModel(), KoinComponent {
 //                    viewEvent(NETWORK_END)
 //                }
 //            }
-        }
-    }
 
-//    private fun getMyCurrency(list: List<AccountEntity>): String {
-//        var currencyString = ""
-//        list.forEach {
-//            currencyString = currencyString.plus("KRW-".plus(it.currency.plus(",")))
-//        }
-//        return currencyString.substring(0, currencyString.lastIndex)
-//    }
 
     fun aniButtonClick() {
         aniState.value = aniState.value!!.not()
