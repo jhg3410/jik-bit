@@ -1,5 +1,6 @@
 package org.inu.jikbit.data.mapper
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.inu.jikbit.data.model.AccountResponse
@@ -21,13 +22,17 @@ object AccountMapper : KoinComponent {
         val returnList: List<AccountEntity>
         val result = accountResponse
         val coinList = result.filter { it.currency != "KRW" }
-        tickerList = withContext(Dispatchers.Default) {
-            tickerRepository.getTickers(getMyCurrency(coinList))
-        }
 
         returnList = when {
-            result[0].currency.isNotEmpty() -> setNotProvideByServer(responseToEntity(coinList), tickerList)
-            else -> errorList
+            result[0].currency.isNotEmpty() -> {
+                tickerList = withContext(Dispatchers.Default) {
+                    tickerRepository.getTickers(getMyCurrency(coinList))
+                }
+                setNotProvideByServer(responseToEntity(coinList), tickerList)
+            }
+            else -> {
+                errorList
+            }
         }
         return returnList
     }
