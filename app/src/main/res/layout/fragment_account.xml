@@ -20,7 +20,7 @@
             android:id="@+id/Frame"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#DFDFDF"
+            android:background="@color/gray30"
             android:paddingBottom="12dp"
             app:layout_constraintBottom_toTopOf="@+id/aniFrame"
             app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +186,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/pullToRefresh"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="#DFDFDF"
+            android:background="@color/gray30"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Frame">
 
@@ -242,7 +242,7 @@
             app:layout_constraintEnd_toEndOf="@id/pullToRefresh"
             tools:visibility="invisible" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <com.madapps.liquid.LiquidRefreshLayout
             android:id="@+id/pullToRefresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -252,17 +252,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/aniFrame"
             app:layout_constraintVertical_weight="3"
+            app:AniBackColor="@color/gray30"
+            app:AniForeColor="@color/white"
+            app:CircleSmaller="6"
             tools:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/accountRecyclerView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:accounts="@{viewModel.accountList}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_account" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </com.madapps.liquid.LiquidRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
