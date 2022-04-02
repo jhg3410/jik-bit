@@ -1,17 +1,20 @@
 package org.inu.jikbit.presentation.ui.account
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.madapps.liquid.LiquidRefreshLayout
 import org.inu.jikbit.R
 import org.inu.jikbit.presentation.adapter.AccountAdapter
 import org.inu.jikbit.global.base.BaseFragment
 import org.inu.jikbit.databinding.FragmentAccountBinding
 import org.inu.jikbit.global.util.observe
 
-class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentAccountBinding>(), SwipeRefreshLayout.OnRefreshListener {
+class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentAccountBinding>(), LiquidRefreshLayout.OnRefreshListener {
 
     override val layoutResourceId: Int = R.layout.fragment_account
 
@@ -37,9 +40,20 @@ class AccountFragment(val viewModel : AccountViewModel) : BaseFragment<FragmentA
         binding.pullToRefresh.setOnRefreshListener(this)
     }
 
-    override fun onRefresh() {
-        showAccounts()
-        binding.pullToRefresh.isRefreshing = false
+//    override fun onRefresh() {
+//        showAccounts()
+//        binding.pullToRefresh.isRefreshing = false
+//    }
+
+    override fun completeRefresh() {
+    }
+
+    override fun refreshing() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            viewModel.getAccounts()
+            binding.accountRecyclerView.adapter = AccountAdapter(viewModel)
+            binding.pullToRefresh.finishRefreshing()
+        },2000)
     }
 
     private fun showAccounts(){
