@@ -22,13 +22,13 @@ object AccountMapper : KoinComponent {
         val returnList: List<AccountEntity>
         val result = accountResponse
         val coinList = result.filter { it.currency != "KRW" }
-
+        val krwList = result.filter { it.currency == "KRW" }
         returnList = when {
             result[0].currency.isNotEmpty() -> {
                 tickerList = withContext(Dispatchers.Default) {
                     tickerRepository.getTickers(getMyCurrency(coinList))
                 }
-                setNotProvideByServer(responseToEntity(coinList), tickerList)
+                setNotProvideByServer(responseToEntity(coinList), tickerList).plus(responseToEntity(krwList))
             }
             else -> {
                 errorList
@@ -68,7 +68,6 @@ object AccountMapper : KoinComponent {
 
 
     private fun setNotProvideByServer(coinList: List<AccountEntity>, tickerList: List<TickerEntity>):List<AccountEntity> {
-        val decimal = DecimalFormat("#,###.##")
         for (i in coinList.indices) {
             with(coinList) {
                 this[i].trade_price = tickerList[i].trade_price
@@ -80,8 +79,6 @@ object AccountMapper : KoinComponent {
                     ((this[i].propertyNow).toDouble() - (this[i].property).toDouble()).toString()
                 this[i].yield =
                     (((this[i].trade_price).toDouble() / ((this[i].avg_buy_price).toDouble()) * 100) - 100).toString()
-                this[i].income = decimal.format(this[i].income.toDouble())
-                this[i].yield = decimal.format(this[i].yield.toDouble())
             }
         }
         return coinList
