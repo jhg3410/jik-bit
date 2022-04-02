@@ -59,4 +59,15 @@ object Span {
         }
     }
 
+
+    fun decimalFormat(text:String?): String{
+        val df = DecimalFormat("#,###.##")
+        return if (text?.contains("%") == true){
+            val textNoPercent = text.substring(0,text.lastIndex)
+            df.format(textNoPercent.toDouble()) + "%"
+        } else{
+            df.format(text?.toDouble())
+        }
+    }
+
 }
