@@ -5,7 +5,7 @@ import org.inu.jikbit.domain.model.TotalEntity
 
 class GetTotalUseCase {
     operator fun invoke(coinList:List<AccountEntity>):TotalEntity{
-        var result  = TotalEntity()
+        val result  = TotalEntity()
 
         for (i in coinList.indices){
             result.run {
@@ -16,6 +16,7 @@ class GetTotalUseCase {
                 this.totalValuationAmount += coinList[i].income.toDouble()
             }
         }
+        result.totalYieldAmount /= coinList.size
         return result
     }
 }
