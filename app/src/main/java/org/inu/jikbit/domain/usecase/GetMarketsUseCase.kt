@@ -5,8 +5,8 @@ import org.inu.jikbit.domain.repository.MarketRepository
 
 class GetMarketsUseCase(private val repository: MarketRepository) {
 
-//    suspend fun invoke(): List<MarketEntity> {
-//        return repository.getMarkets()
-//    }
+    suspend operator fun invoke(): List<MarketEntity> {
+        return repository.getMarkets()
+    }
 
 }
