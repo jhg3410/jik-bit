@@ -1,35 +1,29 @@
 package org.inu.jikbit.presentation.ui.market
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import org.inu.jikbit.domain.model.MarketEntity
+import org.inu.jikbit.domain.usecase.GetMarketsUseCase
 import org.inu.jikbit.global.base.BaseViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class MarketViewModel : BaseViewModel(), KoinComponent {
-//    private val marketRepository: MarketRepository by inject()
-//    private val tickerRepository: TickerRepository by inject()
+    private val getMarketsUseCase: GetMarketsUseCase by inject()
 
     val marketList = MutableLiveData<List<MarketEntity>>()
 
     private var unfilteredList = listOf<MarketEntity>()
 
-//    fun getMarkets() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val marketsDeferred = async { marketRepository.getMarkets() }
-//            unfilteredList = marketsDeferred.await()
-//            val tickersList =
-//                async { tickerRepository.getTickers(getMyMarkets(marketsDeferred.await())) }.await()
-//            for (i in tickersList.indices) {
-//                marketsDeferred.await()[i].trade_price = tickersList[i].trade_price
-//            }
-//            marketList.postValue(marketsDeferred.await())
-//            withContext(Dispatchers.Main) {
-//                viewEvent(NETWORK_END)
-//            }
-//        }
-//    }
+    fun getMarkets(){
+        viewModelScope.launch {
+            marketList.value = getMarketsUseCase()!!
+            viewEvent(NETWORK_END)
+            unfilteredList = marketList.value!!
+        }
+    }
+
 
     private fun filter(inputText: String) {
         val filteredList = mutableListOf<MarketEntity>()
@@ -44,15 +38,6 @@ class MarketViewModel : BaseViewModel(), KoinComponent {
     fun coinTextChanged(text: CharSequence) {
         filter(text.toString())
     }
-
-    private fun getMyMarkets(list: List<MarketEntity>): String {
-        var marketsString = ""
-        list.forEach {
-            marketsString = marketsString.plus(it.market.plus(","))
-        }
-        return marketsString.substring(0, marketsString.lastIndex)
-    }
-
 
     companion object {
         const val NETWORK_END = 1000
