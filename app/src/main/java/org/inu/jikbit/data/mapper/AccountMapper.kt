@@ -25,7 +25,7 @@ object AccountMapper : KoinComponent {
         val krwList = result.filter { it.currency == "KRW" }
         returnList = when {
             result[0].currency.isNotEmpty() -> {
-                tickerList = withContext(Dispatchers.Default) {
+                tickerList = withContext(Dispatchers.IO) {
                     tickerRepository.getTickers(getMyCurrency(coinList))
                 }
                 setNotProvideByServer(responseToEntity(coinList), tickerList).plus(responseToEntity(krwList))
