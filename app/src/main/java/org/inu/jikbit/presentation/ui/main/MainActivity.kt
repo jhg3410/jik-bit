@@ -2,7 +2,6 @@ package org.inu.jikbit.presentation.ui.main
 
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
 import org.inu.jikbit.R
@@ -23,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationBarView.OnIt
     }
     override fun afterDataBinding() {
         binding.pager.adapter = ViewPagerAdapter(this)
-
+        binding.pager.isUserInputEnabled = false
         binding.pager.registerOnPageChangeCallback(
             object: ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
