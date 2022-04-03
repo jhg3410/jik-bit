@@ -71,7 +71,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:markets="@{viewModel.marketList}"
                 tools:itemCount="10"
-                tools:listitem="@layout/item_market" />
+                tools:listitem="@layout/item_market"
+                android:paddingBottom="60dp"
+                android:clipToPadding="false" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

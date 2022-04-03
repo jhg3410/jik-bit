@@ -264,8 +264,13 @@
                 app:accounts="@{viewModel.accountList}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
-                tools:listitem="@layout/item_account" />
+                tools:listitem="@layout/item_account"
+                android:paddingBottom="60dp"
+                android:clipToPadding="false">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </com.madapps.liquid.LiquidRefreshLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
