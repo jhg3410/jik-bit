@@ -12,7 +12,7 @@ class MarketRemoteDataSourceImpl(private val api: MarketHttpService) : MarketRem
         val result = api.getMarkets()
 
         try {
-            return result.body()!!
+            return result.body()!!.filter { it.market.startsWith("KRW-") }
         } catch (e: Exception) {
             throw IllegalStateException("ERROR")
         }
