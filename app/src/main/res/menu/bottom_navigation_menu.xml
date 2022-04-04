@@ -6,12 +6,12 @@
         android:id="@+id/page_1"
         android:icon="@drawable/ic_banknote"
         android:title="Market"
-        app:exb_color= "@color/primary" />
+        app:exb_color= "@color/gray10" />
 
     <item
         android:id="@+id/page_2"
         android:icon="@drawable/ic_credit_card"
         android:title="Account"
-        app:exb_color= "@color/primary" />
+        app:exb_color= "@color/gray10" />
 
 </menu>
