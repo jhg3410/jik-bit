@@ -1,6 +1,7 @@
 package org.inu.jikbit.presentation.ui.main
 
 import android.view.View
+import androidx.core.content.ContextCompat
 import org.inu.jikbit.R
 import org.inu.jikbit.presentation.adapter.ViewPagerAdapter
 import org.inu.jikbit.global.base.BaseActivity
@@ -33,11 +34,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //        ExpandableBottomBarNavigationUI.setupWithNavController(binding.bottomNavigationView,)
     }
 
-    fun bottom(){
+    private fun bottom(){
         binding.bottomNavigationView.onItemSelectedListener = { view, menuItem, Booelan ->
             when(menuItem.id){
-                R.id.page_1 ->  binding.pager.currentItem = 0
-                R.id.page_2 ->  binding.pager.currentItem = 1
+                R.id.page_1 -> {
+                    binding.pager.currentItem = 0
+                    this.window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+                }
+                R.id.page_2 ->  {
+                    binding.pager.currentItem = 1
+                    this.window.statusBarColor = ContextCompat.getColor(this, R.color.gray40)
+                }
             }
         }
     }
