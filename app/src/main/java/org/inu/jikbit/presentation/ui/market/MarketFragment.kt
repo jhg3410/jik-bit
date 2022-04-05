@@ -5,8 +5,10 @@ import android.annotation.SuppressLint
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 import org.inu.jikbit.R
 import org.inu.jikbit.presentation.adapter.MarketAdapter
 import org.inu.jikbit.global.base.BaseFragment
@@ -47,7 +49,20 @@ class MarketFragment(val viewModel: MarketViewModel) : BaseFragment<FragmentMark
     private fun showMarkets(){
         showLoading()
         viewModel.getMarkets()
-        binding.marketRecyclerView.adapter = MarketAdapter(viewModel)
+//        binding.marketRecyclerView.adapter = MarketAdapter()
+        observe(viewModel.marketList){
+
+//            (binding.marketRecyclerView.adapter as MarketAdapter).submitList(it)
+            binding.marketRecyclerView.adapter = ScaleInAnimationAdapter(MarketAdapter().apply {
+                submitList(it)
+            }).apply {
+                setFirstOnly(false)
+                setDuration(1000)
+                setInterpolator(OvershootInterpolator())
+            }
+        }
+
+
     }
 
     @SuppressLint("ClickableViewAccessibility")

@@ -92,4 +92,6 @@ dependencies {
     // ExpandableBottomBar
     implementation 'com.github.st235:expandablebottombar:1.4.0'
 
+    // RecyclerView Animators
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 }
