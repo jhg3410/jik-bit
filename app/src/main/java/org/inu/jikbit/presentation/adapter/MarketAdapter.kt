@@ -1,27 +1,75 @@
 package org.inu.jikbit.presentation.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import jp.wasabeef.blurry.Blurry
+import org.inu.jikbit.R
 import org.inu.jikbit.databinding.ItemMarketBinding
 import org.inu.jikbit.domain.model.MarketEntity
+import org.inu.jikbit.presentation.ui.market.MarketViewModel
+import org.koin.core.component.KoinComponent
 
-class MarketAdapter: ListAdapter<MarketEntity, MarketAdapter.ViewHolder>(MarketDiffUtil()) {
+class MarketAdapter(val viewModel: MarketViewModel): ListAdapter<MarketEntity, MarketAdapter.ViewHolder>(MarketDiffUtil()), KoinComponent {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(ItemMarketBinding.inflate(
-        LayoutInflater.from(parent.context),parent,false))
+        LayoutInflater.from(parent.context),parent,false),viewModel)
 
     override fun onBindViewHolder(holder: MarketAdapter.ViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.findViewById<MaterialCardView>(R.id.materialCard).setOnClickListener {
+            holder.blurryOfClick(getItem(position),it)
+        }
+        holder.blurryOfPre(getItem(position),holder.itemView.findViewById<MaterialCardView>(R.id.materialCard))
     }
 
-
-    class ViewHolder(private val binding: ItemMarketBinding):RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemMarketBinding, val viewModel:MarketViewModel):RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MarketEntity){
             binding.item = item
+            binding.viewModel = viewModel
             binding.executePendingBindings()
+        }
+
+        fun blurryOfClick(item: MarketEntity,view: View){
+            if (item.blurry){
+                Blurry.delete(view as ViewGroup)
+                item.blurry = false
+                binding.detailTextView.visibility = View.INVISIBLE
+            }
+            else{
+                Blurry.with(binding.root.context)
+                    .color(Color.argb(77, 128, 128, 128))
+                    .radius(4)
+                    .sampling(6)
+                    .postOnto(view as ViewGroup)
+
+                binding.detailTextView.visibility = View.VISIBLE
+                item.blurry = true
+            }
+        }
+
+        fun blurryOfPre(item: MarketEntity,view:View){
+            if(item.blurry){
+                Blurry.with(binding.root.context)
+                    .color(Color.argb(77, 128, 128, 128))
+                    .radius(4)
+                    .sampling(6)
+                    .postOnto(view as ViewGroup)
+                binding.detailTextView.visibility = View.VISIBLE
+            }
+            else{
+                Blurry.delete(view as ViewGroup)
+                binding.detailTextView.visibility = View.INVISIBLE
+            }
+        }
+
+        private fun Blurry.Composer.postOnto(view: ViewGroup) {
+            view.post { onto(view) }        // todo 해석하기
         }
     }
 }
