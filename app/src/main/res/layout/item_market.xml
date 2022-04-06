@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,9 +14,7 @@
             type="org.inu.jikbit.presentation.ui.market.MarketViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/detailView"
+                    android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -98,40 +98,86 @@
                         app:layout_constraintTop_toBottomOf="@id/purchasePrice"
                         tools:text="도지코인" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:gravity="end"
-                        android:textColor="@color/gray20"
-                        android:textSize="16sp"
-                        android:textStyle="italic"
-                        app:layout_constraintBottom_toTopOf="@id/purchasePrice"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/CoinName"
-                        app:textWithFormat="@{item.trade_price}"
-                        tools:text="2222222222" />
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        android:gravity="end"-->
+                    <!--                        android:textColor="@color/gray20"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        android:textStyle="italic"-->
+                    <!--                        app:layout_constraintBottom_toTopOf="@id/purchasePrice"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintStart_toEndOf="@id/CoinName"-->
+                    <!--                        app:textWithFormat="@{item.trade_price}"-->
+                    <!--                        tools:text="2222222222" />-->
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-                <TextView
-                    android:id="@+id/detailTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginVertical="40dp"
-                    android:layout_marginHorizontal="60dp"
-                    android:textColor="#ffffff"
-                    android:text="asdmaskldmsakldmaskmdlsadasmdas"
-                    android:gravity="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:background="#66000000"
-                    android:visibility="visible"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detailView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="30dp"
+            android:background="@drawable/backgroun_detail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/low_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/varelaround_regular"
+                android:gravity="center"
+                android:text="@{`최저가\n`+item.low_price}"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/trade_price"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="최저가\n176" />
+
+            <TextView
+                android:id="@+id/trade_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/varelaround_regular"
+                android:gravity="center"
+                android:text="@{`현재가\n`+item.trade_price}"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/low_price"
+                app:layout_constraintEnd_toStartOf="@+id/high_price"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/low_price"
+                app:layout_constraintTop_toTopOf="@id/low_price"
+                tools:text="현재가\n180" />
+
+            <TextView
+                android:id="@+id/high_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/varelaround_regular"
+                android:gravity="center"
+                android:text="@{`최고가\n`+item.high_price}"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/low_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/trade_price"
+                app:layout_constraintTop_toTopOf="@id/low_price"
+                tools:text="최고가\n194" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
