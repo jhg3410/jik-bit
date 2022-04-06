@@ -37,19 +37,19 @@ class MarketAdapter(val viewModel: MarketViewModel): ListAdapter<MarketEntity, M
 
         fun blurryOfClick(item: MarketEntity,view: View){
             if (item.blurry){
-                Blurry.delete(view as ViewGroup)
                 item.blurry = false
-                binding.detailTextView.visibility = View.INVISIBLE
+                Blurry.delete(view as ViewGroup)
+                binding.detailView.visibility = View.INVISIBLE
             }
             else{
+                item.blurry = true
                 Blurry.with(binding.root.context)
                     .color(Color.argb(77, 128, 128, 128))
                     .radius(4)
                     .sampling(6)
                     .postOnto(view as ViewGroup)
 
-                binding.detailTextView.visibility = View.VISIBLE
-                item.blurry = true
+                binding.detailView.visibility = View.VISIBLE
             }
         }
 
@@ -60,11 +60,11 @@ class MarketAdapter(val viewModel: MarketViewModel): ListAdapter<MarketEntity, M
                     .radius(4)
                     .sampling(6)
                     .postOnto(view as ViewGroup)
-                binding.detailTextView.visibility = View.VISIBLE
+                binding.detailView.visibility = View.VISIBLE
             }
             else{
                 Blurry.delete(view as ViewGroup)
-                binding.detailTextView.visibility = View.INVISIBLE
+                binding.detailView.visibility = View.INVISIBLE
             }
         }
 
