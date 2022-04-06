@@ -18,97 +18,120 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="16dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/accountImageView"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:layout_margin="5dp"
-                    app:ImageWithUrl="@{item.market.substring(4).toLowerCase()}"
-                    android:scaleType="centerCrop"
-                    android:padding="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/ic_launcher_foreground" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/detailView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <ImageView
+                        android:id="@+id/accountImageView"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"
+                        android:scaleType="centerCrop"
+                        app:ImageWithUrl="@{item.market.substring(4).toLowerCase()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/ic_launcher_foreground" />
+
+                    <TextView
+                        android:id="@+id/CoinName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:text="@{item.market}"
+                        android:textColor="#676767"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@id/accountImageView"
+                        app:layout_constraintTop_toTopOf="@id/accountImageView"
+                        tools:text="KRW-DOGE" />
+
+                    <TextView
+                        android:id="@+id/purchasePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:text="@{item.english_name}"
+                        android:textColor="#8A8787"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/CoinName"
+                        app:layout_constraintTop_toBottomOf="@id/CoinName"
+                        tools:text="DOGE" />
+
+                    <TextView
+                        android:id="@+id/property"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:text="@{item.korean_name}"
+                        android:textColor="#8A8787"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/purchasePrice"
+                        app:layout_constraintTop_toBottomOf="@id/purchasePrice"
+                        tools:text="도지코인" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="end"
+                        android:textColor="@color/gray20"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@id/purchasePrice"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/CoinName"
+                        app:textWithFormat="@{item.trade_price}"
+                        tools:text="2222222222" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
                 <TextView
-                    android:id="@+id/CoinName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:fontFamily="@font/varelaround_regular"
-                    android:text="@{item.market}"
-                    android:textColor="#676767"
-                    android:textSize="18sp"
-                    tools:text="KRW-DOGE"
-                    app:layout_constraintStart_toEndOf="@id/accountImageView"
-                    app:layout_constraintTop_toTopOf="@id/accountImageView" />
-
-                <TextView
-                    android:id="@+id/purchasePrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/varelaround_regular"
-                    android:text="@{item.english_name}"
-                    android:textColor="#8A8787"
-                    android:textSize="16sp"
-                    tools:text="DOGE"
-                    app:layout_constraintStart_toStartOf="@id/CoinName"
-                    app:layout_constraintTop_toBottomOf="@id/CoinName" />
-
-                <TextView
-                    android:id="@+id/property"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/varelaround_regular"
-                    android:textColor="#8A8787"
-                    android:text="@{item.korean_name}"
-                    android:textSize="16sp"
-                    tools:text="도지코인"
-                    app:layout_constraintStart_toStartOf="@id/purchasePrice"
-                    app:layout_constraintTop_toBottomOf="@id/purchasePrice" />
-
-                <TextView
+                    android:id="@+id/detailTextView"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@id/purchasePrice"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="40dp"
+                    android:layout_marginHorizontal="60dp"
+                    android:textColor="#ffffff"
+                    android:text="asdmaskldmsakldmaskmdlsadasmdas"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/CoinName"
-                    app:textWithFormat="@{item.trade_price}"
-                    tools:text="2222222222"
-                    android:gravity="end"
-                    android:layout_marginEnd="16dp"
-                    android:textSize="16sp"
-                    android:textStyle="italic"
-                    android:textColor="@color/gray20"/>
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
+                    android:background="#66000000"
+                    android:visibility="visible"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
