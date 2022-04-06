@@ -53,7 +53,7 @@ class MarketFragment(val viewModel: MarketViewModel) : BaseFragment<FragmentMark
         observe(viewModel.marketList){
 
 //            (binding.marketRecyclerView.adapter as MarketAdapter).submitList(it)
-            binding.marketRecyclerView.adapter = ScaleInAnimationAdapter(MarketAdapter().apply {
+            binding.marketRecyclerView.adapter = ScaleInAnimationAdapter(MarketAdapter(viewModel).apply {
                 submitList(it)
             }).apply {
                 setFirstOnly(false)
