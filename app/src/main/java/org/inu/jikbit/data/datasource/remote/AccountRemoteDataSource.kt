@@ -12,7 +12,7 @@ class AccountRemoteDataSourceImpl(private val api: AccountHttpService) : Account
         val result = api.getAccounts()
 
         try {
-            return result.body() ?: listOf(AccountResponse("", "", "", "", false, ""))
+            return result.body()?.reversed() ?: listOf(AccountResponse("", "", "", "", false, ""))
         } catch (e: Exception) {
             throw IllegalStateException("ERROR")
         }
